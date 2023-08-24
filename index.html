@@ -1,640 +1,76 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-08-05 09:38:42
+ * @LastEditTime: 2021-08-06 10:05:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \(自动旋转)3D旋转相册-流星雨\index.html
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- <meta charset="UTF-8">
- <title>流星雨3D旋转相册1</title>
- <link rel="stylesheet" href="style.css">
- <style>
- 
- /* 流星css */
+    <meta charset="UTF-8">
+    <title>520-❤</title>
 
-.star:nth-child(25) {
-  --star-tail-length: 6.56em;
-  --top-offset: 65.69vh;
-  --fall-duration: 9.641s;
-  --fall-delay: 0.982s;
-}
-.star:nth-child(26) {
-  --star-tail-length: 6.5em;
-  --top-offset: 80.77vh;
-  --fall-duration: 6.756s;
-  --fall-delay: 5.443s;
-}
-.star:nth-child(27) {
-  --star-tail-length: 6.01em;
-  --top-offset: 30.77vh;
-  --fall-duration: 7.305s;
-  --fall-delay: 8.435s;
-}
-.star:nth-child(28) {
-  --star-tail-length: 6.74em;
-  --top-offset: 57.09vh;
-  --fall-duration: 10.082s;
-  --fall-delay: 9.389s;
-}
-.star:nth-child(29) {
-  --star-tail-length: 6.09em;
-  --top-offset: 65.11vh;
-  --fall-duration: 6.587s;
-  --fall-delay: 6.4s;
-}
-.star:nth-child(30) {
-  --star-tail-length: 7.49em;
-  --top-offset: 92.88vh;
-  --fall-duration: 10.762s;
-  --fall-delay: 2.241s;
-}
-.star:nth-child(31) {
-  --star-tail-length: 5.77em;
-  --top-offset: 97.66vh;
-  --fall-duration: 10.42s;
-  --fall-delay: 4.185s;
-}
-.star:nth-child(32) {
-  --star-tail-length: 7.1em;
-  --top-offset: 48.23vh;
-  --fall-duration: 9.418s;
-  --fall-delay: 0.79s;
-}
-.star:nth-child(33) {
-  --star-tail-length: 5.06em;
-  --top-offset: 70.09vh;
-  --fall-duration: 6.436s;
-  --fall-delay: 2.047s;
-}
-.star:nth-child(34) {
-  --star-tail-length: 5.35em;
-  --top-offset: 47.6vh;
-  --fall-duration: 8.384s;
-  --fall-delay: 4.431s;
-}
-.star:nth-child(35) {
-  --star-tail-length: 6.5em;
-  --top-offset: 35.5vh;
-  --fall-duration: 9.579s;
-  --fall-delay: 2.685s;
-}
-.star:nth-child(36) {
-  --star-tail-length: 5.31em;
-  --top-offset: 78.83vh;
-  --fall-duration: 10.381s;
-  --fall-delay: 0.631s;
-}
-.star:nth-child(37) {
-  --star-tail-length: 7.45em;
-  --top-offset: 75.7vh;
-  --fall-duration: 6.924s;
-  --fall-delay: 6.499s;
-}
-.star:nth-child(38) {
-  --star-tail-length: 6.71em;
-  --top-offset: 50.78vh;
-  --fall-duration: 8.385s;
-  --fall-delay: 6.098s;
-}
-.star:nth-child(39) {
-  --star-tail-length: 5.03em;
-  --top-offset: 36.46vh;
-  --fall-duration: 9.385s;
-  --fall-delay: 6.252s;
-}
-.star:nth-child(40) {
-  --star-tail-length: 5.58em;
-  --top-offset: 86.88vh;
-  --fall-duration: 7.07s;
-  --fall-delay: 0.626s;
-}
-.star:nth-child(41) {
-  --star-tail-length: 5.75em;
-  --top-offset: 16.67vh;
-  --fall-duration: 8.02s;
-  --fall-delay: 1.497s;
-}
-.star:nth-child(42) {
-  --star-tail-length: 7.08em;
-  --top-offset: 56.93vh;
-  --fall-duration: 9.208s;
-  --fall-delay: 5.358s;
-}
-.star:nth-child(43) {
-  --star-tail-length: 5.6em;
-  --top-offset: 73.67vh;
-  --fall-duration: 6.207s;
-  --fall-delay: 3.243s;
-}
-.star:nth-child(44) {
-  --star-tail-length: 5.45em;
-  --top-offset: 25.2vh;
-  --fall-duration: 10.599s;
-  --fall-delay: 8.583s;
-}
-.star:nth-child(45) {
-  --star-tail-length: 7.14em;
-  --top-offset: 56.77vh;
-  --fall-duration: 11.523s;
-  --fall-delay: 9.923s;
-}
-.star:nth-child(46) {
-  --star-tail-length: 5.22em;
-  --top-offset: 10.01vh;
-  --fall-duration: 8.072s;
-  --fall-delay: 0.293s;
-}
-.star:nth-child(47) {
-  --star-tail-length: 7.44em;
-  --top-offset: 87.25vh;
-  --fall-duration: 9.226s;
-  --fall-delay: 2.065s;
-}
-.star:nth-child(48) {
-  --star-tail-length: 7.43em;
-  --top-offset: 68.32vh;
-  --fall-duration: 11.421s;
-  --fall-delay: 7.182s;
-}
-.star:nth-child(49) {
-  --star-tail-length: 5.68em;
-  --top-offset: 56.42vh;
-  --fall-duration: 9.508s;
-  --fall-delay: 7.669s;
-}
-.star:nth-child(50) {
-  --star-tail-length: 5.37em;
-  --top-offset: 93.45vh;
-  --fall-duration: 10.222s;
-  --fall-delay: 4.175s;
-}
-.star::before,
-.star::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: calc(var(--star-width) / -2);
-  width: var(--star-width);
-  height: 100%;
-  background: linear-gradient(45deg, transparent, currentColor, transparent);
-  border-radius: inherit;
-  animation: blink 2s linear infinite;
-}
-.star::before {
-  transform: rotate(45deg);
-}
-.star::after {
-  transform: rotate(-45deg);
-}
-
-@keyframes fall {
-  to {
-    transform: translate3d(-30em, 0, 0);
-  }
-}
-@keyframes tail-fade {
-  0%,
-  50% {
-    width: var(--star-tail-length);
-    opacity: 1;
-  }
-  70%,
-  80% {
-    width: 0;
-    opacity: 0.6;
-  }
-  100% {
-    width: 0;
-    opacity: 0;
-  }
-}
-@keyframes blink {
-  50% {
-    opacity: 0.6;
-  }
-}
-
- 
-  *{margin: 0;padding: 0;}
-  html,body{height: 100%;}
-  body{
-   display: flex;
-   perspective: 1000px;
-   transform-style: preserve-3d;
-   /* background-image: url(./img/3.png); */
-   background: #0c0c0c;
-   height:100%;
-   width: 100%;
-  }
-  #box{
-   z-index: 9999;
-   position: relative;
-   display: flex;
-   width: 130px;
-   height: 200px;
-   margin: auto;
-   transform-style: preserve-3d; 
-   transform: rotateX(-10deg);
-  }
-  #box > div{
-   transform-style: preserve-3d; 
-   position: absolute;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   line-height: 200px;
-   font-size: 50px;
-   text-align: center;
-   box-shadow:0 0 10px #fff;
-   -webkit-box-reflect:below 10px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
-  }
-  
-  #box p{
-   position: absolute;
-   left: 0;
-   top: 0;
-   bottom: 0;
-   right: 0;
-   margin: auto;
-   width: 1200px;
-   height: 1200px;
-   background: -webkit-radial-gradient(center center,600px 600px,rgba(50,50,50,1),rgba(0,0,0,0));
-   border-radius: 50%;
-   transform: rotateX(90deg) translate3d(-600px,0,-105px);
-  }
-  /* 下雨特效 */
-   #codepen-link {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    height: 40px;
-    width: 40px;
-    z-index: 10;
-    border-radius: 50%;
-    box-sizing: border-box;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318/logo.jpg");
-    background-position: center center;
-    background-size: cover;
-    opacity: 0.5;
-    -webkit-transition: all 0.25s;
-    transition: all 0.25s;
-   }
- 
-   #codepen-link:hover {
-    opacity: 0.8;
-    box-shadow: 0 0 6px #efefef;
-   }
- </style>
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <script src='https://cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
 </head>
+
 <body>
- <audio autoplay="autopaly">
-  <source src="renxi.mp3" type="audio/mp3" />
-   </audio>
- <!-- 相册 -->
-<div id="box">
- <div></div>
-    <img src="img/1.png" alt="图片描述">
- <div></div>
- <div></div>
- <div></div>
- <div></div>
- <div></div>
- <div></div>
- <div></div>
- <div></div>
- <p></p>
-</div>
-<!-- 流星 -->
-<div class="stars">
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
- <div class="star"></div>
-  </div>
-<script id="jqbb" src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 背景S -->
+    <audio controls autoplay>
+        <source src="mp3/520.mp3">
+    </audio>
+    <div style="position:fixed;width: 100%;height:100%;top:0; z-index:-1;">
+        <div id="background" class="wall"></div>
+        <div id="midground" class="wall"></div>
+        <div id="foreground" class="wall"></div>
+        <div id="top" class="wall"></div>
+    </div>
 
-<script>
-setTimeout(init,100);
-function init(){
- var obox = document.getElementById('box'),
-  aDiv = obox.getElementsByTagName('div');
-  
-  for (var i = 0; i < aDiv.length; i++) {
-   aDiv[i].style.background = "url(img/"+(i+1)+".jpg) center/cover";
-   aDiv[i].style.transform = "rotateY("+(i*36)+"deg) translate3d(0,0,350px)";
-   aDiv[i].style.transition = "transform 1s "+(aDiv.length-i)*0.2+"s";
-  }
- var sX,
-  sY,
-  nX,
-  nY,
-  desX = 0,
-  desY = 0,
-  tX = 0,
-  tY = 10,
-  index = 0;//滚轮初始值
- document.onmousedown = function(e){
-  clearInterval(obox.timer);
-  e = e || window.event;
-  var sX = e.clientX,
-   sY = e.clientY;
-   this.onmousemove = function(e){
-    e = e || window.event;
-    var nX = e.clientX,
-     nY = e.clientY;
-      // 当前点的坐标和前一点的坐标差值
-     desX = nX - sX;
-     desY = nY - sY;
-                    tX += desX*0.1; 
-                    tY += desY*0.1;
+    <!-- 背景E -->
 
-     obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
-     sX = nX;
-     sY = nY;
-   }
-   this.onmouseup = function(){
-    this.onmousemove = this.onmouseup = null;
-    obox.timer = setInterval(function(){
-     desX *= 0.95;
-     desY *= 0.95;
-     tX += desX*0.1;
-     tY += desY*0.1;
-     obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
-     if (Math.abs(desX)<0.5 && Math.abs(desY)<0.5) {
-      clearInterval(obox.timer);
-     }
-    },13);
-   }
-  return false;
- }
- //滚轮放大缩小
- mousewheel(document,function(e){
-  e = e || window.event;
-  var d = e.wheelDelta/120 || -e.detail/3;
-   if (d>0) {
-    index-=20;
-   }else{
-    index+=30;
-   }
-   (index<(-1050)&&(index=(-1050)));
-  document.body.style.perspective = 1000 + index + "px";
- })
- function mousewheel(obj,fn){
-  document.onmousewheel===null?obj.onmousewheel=fn:addEvent(obj,"DOMMouseScroll",fn)
- }
- function addEvent(obj,eName,fn){
-  obj.attachEvent?obj.attachEvent("on"+eName,fn):obj.addEventListener(eName,fn);
- }
-}
-</script>
-<!-- 下雨特效 -->
-<script>
- function reload_html() {
-  $("\x62\x6f\x64\x79")["\x68\x74\x6d\x6c"]("");
- }
+    <!-- 3D旋转相册 -->
+    <div id="drag-container">
+        <div id="spin-container">
 
- function addhtml(lViZBL1) {
-  $("\x62\x6f\x64\x79")["\x68\x74\x6d\x6c"](lViZBL1);
- }
+            <!-- <img src="img/pexels-photo-206395.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <img src="img/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <img src="img/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <img src="img/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <img src="img/pexels-photo-1382734.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <img src="img/pexels-photo-1462636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""> -->
+               <!-- 相片  可以放多张 6-10张合适-->
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+            <img src="img/6.jpg" alt="">
+            <img src="img/7.jpg" alt="">
+            <img src="img/8.jpg" alt="">
+            <img src="img/9.jpg" alt="">
+            <img src="img/10.jpg" alt="">
+            <!-- 可放外链图片 -->
+            <!-- <a target="_blank" href="img/pexels-photo-139829.jpeg">
+      <img src="img/pexels-photo-139829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+    </a> -->
+            <!-- 告白视频 -->
+            <!-- <video controls autoplay="autoplay" loop>
+      <source src="https://blz-videos.nosdn.127.net/1/OverWatch/OVR_D.VA_SHOOTING_STAR_zhCN_YT_PC_3.mp4?s=338c48ac2dfcb1d4c0689968b5baf94eee6ca0c1&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
+    </video> -->
 
- function addcss(CDEsDFFJ2) {
-  var EZS_sF3 = window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x63\x72\x65\x61\x74\x65\x45\x6c\x65\x6d\x65\x6e\x74"]("\x73\x74\x79\x6c\x65");
-  EZS_sF3["\x69\x6e\x6e\x65\x72\x48\x54\x4d\x4c"] = CDEsDFFJ2;
-  window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x71\x75\x65\x72\x79\x53\x65\x6c\x65\x63\x74\x6f\x72"]("\x62\x6f\x64\x79")["\x61\x70\x70\x65\x6e\x64\x43\x68\x69\x6c\x64"](EZS_sF3);
- }
+            <!-- 告白文字-->
+            <p>520-❤-小倩</p>
+        </div>
+        <div id="ground"></div>
+    </div>
 
- function addjs(qGZu4) {
-  $("\x62\x6f\x64\x79")["\x61\x70\x70\x65\x6e\x64"](qGZu4);
- }
-
- function jqban(nJ5) {
-  $("\x23\x6a\x71\x62\x62")["\x61\x74\x74\x72"]("\x73\x72\x63", "\x68\x74\x74\x70\x3a\x2f\x2f\x6c\x69\x62\x73\x2e\x62\x61\x69\x64\x75\x2e\x63\x6f\x6d\x2f\x6a\x71\x75\x65\x72\x79\x2f" + nJ5 + "\x2f\x6a\x71\x75\x65\x72\x79\x2e\x6d\x69\x6e\x2e\x6a\x73");
- }
-</script>
-<script>
-    (function(window, document) {
-        var Vector2 = (function() {
-            function Vector2(x, y) {
-                this.x = x || 0;
-                this.y = y || 0;
-            }
-            return Vector2;
-        })();
-
-        Vector2.prototype.add = function(addend) {
-            this.x += addend.x;
-            this.y += addend.y;
-        };
-
-        var RainDrop = (function() {
-            function RainDrop(parent) {
-                this.size = 2;
-                this.parent = parent;
-                this.init();
-            }
-            return RainDrop;
-        })();
-
-        RainDrop.prototype.init = function() {
-            this.life = 0;
-            this.ttl = Math.random() * 500 + 300;
-            this.position = new Vector2(Math.random() * window.innerWidth, 0);
-            this.velocity = new Vector2(
-                0.5 - Math.random() * 1,
-                Math.random() * 1 + 0.2
-            );
-            this.terminalVelocity = 8;
-        };
-
-        RainDrop.prototype.update = function() {
-            if (
-                this.position.x > window.innerWidth ||
-                this.position.x < -this.size ||
-                this.life > this.ttl
-            )
-                this.init();
-            if (this.position.y > this.parent.floor) {
-                this.position.y = this.parent.floor - this.size;
-                this.velocity.y *= -0.2 - Math.random() * 0.2;
-            }
-            this.life++;
-            this.position.add(this.velocity);
-            this.velocity.y += 0.1;
-        };
-
-        var Rain = (function() {
-            function Rain(args) {
-                this.props = args;
-                this.rainDrops = [];
-                this.init();
-            }
-            return Rain;
-        })();
-
-        Rain.prototype.init = function() {
-            this.createCanvas();
-            this.resize();
-            this.loop();
-        };
-
-        Rain.prototype.resize = function() {
-            var attr =
-                "position: absolute; z-index: 0; top: 0; left: 0; height: 100vh; width: 100vw;";
-
-            this.canvas.setAttribute("style", attr);
-
-            this.dimensions = {
-                width: window.innerWidth,
-                height: window.innerHeight
-            };
-
-            this.canvas.width = this.dimensions.width;
-            this.canvas.height = this.dimensions.height;
-            this.floor = this.dimensions.height * 0.7;
-        };
-
-        Rain.prototype.createCanvas = function() {
-            this.canvas = document.createElement("canvas");
-
-            this.ctx = this.canvas.getContext("2d");
-
-            document.body.appendChild(this.canvas);
-        };
-
-        Rain.prototype.draw = function() {
-            this.ctx.fillStyle = this.props.backgroundColor;
-            this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
-            for (var i = 0, len = this.rainDrops.length; i < len; i++) {
-                var rainDrop = this.rainDrops[i];
-                rainDrop.update();
-                this.ctx.fillStyle = this.props.rainColor;
-                this.ctx.fillRect(
-                    rainDrop.position.x,
-                    rainDrop.position.y,
-                    rainDrop.size,
-                    rainDrop.size
-                );
-            }
-            this.reflect();
-        };
-
-        Rain.prototype.reflect = function() {
-            var grad = this.ctx.createLinearGradient(
-                this.dimensions.width / 2,
-                this.floor * 0.6,
-                this.dimensions.width / 2,
-                this.floor
-            );
-            grad.addColorStop(0, "rgba(20,30,40,1)");
-            grad.addColorStop(1, "rgba(20,30,40,0)");
-            this.ctx.save();
-            this.ctx.scale(1, -1);
-            this.ctx.translate(0, this.floor * -2);
-            this.ctx.filter = "blur(2px) saturate(150%)";
-            this.ctx.drawImage(
-                this.canvas,
-                0,
-                0,
-                this.dimensions.width,
-                this.floor,
-                0,
-                0,
-                this.dimensions.width,
-                this.floor
-            );
-            this.ctx.fillStyle = grad;
-            this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
-            this.ctx.restore();
-        };
-
-        Rain.prototype.loop = function() {
-            var timeout,
-                self = this;
-            if (self.rainDrops.length < self.props.rainDropCount) {
-                timeout = window.setTimeout(function() {
-                    self.rainDrops.push(new RainDrop(self));
-                }, Math.random() * 200);
-            } else if (timeout) {
-                timeout = null;
-                window.clearTimeout(timeout);
-            }
-            self.draw();
-            window.requestAnimationFrame(self.loop.bind(self));
-        };
-
-        window.onload = function() {
-            var args = {
-                rainDropCount: 500,
-                rainColor: "rgba(150,180,255,0.8)",
-                backgroundColor: "rgba(10,10,10,0.5)"
-            };
-
-            var rain = new Rain(args);
-
-            window.onresize = function() {
-                rain.resize();
-            };
-        };
-
-        window.requestAnimationFrame = (function() {
-            return (
-                window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.oRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                function(callback) {
-                    window.setTimeout(callback, 1000 / 60);
-                }
-            );
-        })();
-    })(this, document);
-</script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
 </body>
+
 </html>
-<script src="jq22-1.js"></script>
