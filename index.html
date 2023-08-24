@@ -1,443 +1,434 @@
-<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <embed src="1.mp3" hidden="true" autostart="true" loop="true"> -->
-    <title>相册</title>
-    <style>
-    *{ padding:0; margin:0; list-style:none; border:0;}
-    html,body #stars .abc{
-            margin: 0;
-            padding: 0;
-        }
-        body,#stars .abc{
-            width: 100%;
-            height: 100%;
-             perspective: 1000px;
-            background-color:black;
-        }
-        .abc
-        {
-            position:absolute;
-             /* overflow: hidden;*/
-             margin:20px auto;
-        }
-         #stars
-        
-        {
-          position: absolute;
+ <meta charset="UTF-8">
+ <title>流星雨3D旋转相册</title>
+ <link rel="stylesheet" href="style.css">
+ <style>
+  *{margin: 0;padding: 0;}
+  html,body{height: 100%;}
+  body{
+   display: flex;
+   perspective: 1000px;
+   transform-style: preserve-3d;
+   /* background-image: url(./img/3.png); */
+   background: #0c0c0c;
+   height:100%;
+   width: 100%;
+  }
+  #box{
+   z-index: 9999;
+   position: relative;
+   display: flex;
+   width: 130px;
+   height: 200px;
+   margin: auto;
+   transform-style: preserve-3d; 
+   transform: rotateX(-10deg);
+  }
+  #box > div{
+   transform-style: preserve-3d; 
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   line-height: 200px;
+   font-size: 50px;
+   text-align: center;
+   box-shadow:0 0 10px #fff;
+   -webkit-box-reflect:below 10px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
+  }
+  
+  #box p{
+   position: absolute;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   margin: auto;
+   width: 1200px;
+   height: 1200px;
+   background: -webkit-radial-gradient(center center,600px 600px,rgba(50,50,50,1),rgba(0,0,0,0));
+   border-radius: 50%;
+   transform: rotateX(90deg) translate3d(-600px,0,-105px);
+  }
+  /* 下雨特效 */
+   #codepen-link {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    height: 40px;
+    width: 40px;
+    z-index: 10;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318/logo.jpg");
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+   }
  
-          overflow: hidden;
-        
-        }
-    .all{
-            width:250px;
-            height:400px;
-            padding:1px;
-            border:1px solid #ccc;
-            margin:120px 0px 0px 35px;
-            position:relative;
-            float :left;
-             background-size:contain;
-        }
-        .screen{
-          width:250px;
-            height:400px;
-            overflow:hidden;
-            position:relative;
-        }
-        .screen li{ width:250px;height:400px; overflow:hidden; float:left;}
-        .screen ul{ position:absolute; left:0; top:0px; width:3000px;}
-        .all1{
-           width:250px;
-           height:400px;
-            padding:1px;
-            border:1px solid #ccc;
-            margin:120px auto;
-            position:relative;
-            left:300px;
-            float :right;
-            background-size:contain;
-        }
-        .screen1{
-           width:250px;
-           height:400px;
-             padding:0px;
-            overflow:hidden;
-            position:relative;
-        }
-        .screen1 li{ width:250px;height:400px;overflow:hidden; float:left;}
-        .screen1 ul{ position:absolute; left:-10; top:0px; width:3000px;}
-    
-         .album
-         {
-            width: 546px;
-            height: 546px;
-         margin: 300px 0px 0px 0px;
-         }
-        .album,#stars{
-            perspective: 2000px; 
-        }
-        .album .photos{
-            position:relative ;
-            width: 246px;
-            height: 246px;
-            margin: 0px 300px;
-            transform-style: preserve-3d; /*设置3d风格*/
-            transform: rotateX(-10deg) rotateY(0deg);
-        }
-        .album .photos .photo{
-            display: inline-block;
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border: 1px solid #fff;
-            /*background-color: ;*/
-            background-size:contain;
-            transition: 2s;
-        }
-</style>
+   #codepen-link:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 6px #efefef;
+   }
+ </style>
+
 </head>
-<body >
-<div class="abc" >
-<!-- <p> <marquee style="background-color: white "> 时光 </marquee></p> -->
-<canvas id="stars"></canvas>
-<div class="all" id='all'>
-    <div class="screen" id="screen">
-        <ul id="ul">
-            <li><img src="1.1.jpg" width="250" height="400" /></li>
-            <li><img src="1.2.jpg" width="250" height="400"/></li>
-            <li><img src="1.3.jpg" width="250" height="400" /></li>
-            <li><img src="1.4.jpg" width="250" height="400"/></li>
-            <li><img src="1.5.jpg" width="250" height="400"/></li>
-        </ul>
-    </div>
+<body>
+ <audio autoplay="autopaly">
+  <source src="renxi.mp3" type="audio/mp3" />
+   </audio>
+ <!-- 相册 -->
+<div id="box">
+ <div>https://m.95549.cn/resources/esp/college/test/img/1.jpg</div>
+    <img src="img/1.png" alt="图片描述">
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <p></p>
 </div>
-    <div class="album " style="float: left"  >
-        <div class="photos" >
-            <div class="photo" style="background-image:url(1.jpg)" >1</div>
-            <div class="photo" style="background-image:url(2.jpg)" >2</div>
-            <div class="photo" style="background-image:url(3.jpg)" >3</div>
-            <div class="photo" style="background-image:url(4.jpg)" >4</div>
-            <div class="photo" style="background-image:url(5.jpg)" >5</div>
-            <div class="photo" style="background-image:url(6.jpg)" >6</div>
-            <div class="photo" style="background-image:url(7.jpg)" >7</div>
-            <div class="photo" style="background-image:url(8.jpg)" >8</div>
-            <div class="photo" style="background-image:url(9.jpg)" >9</div>
-            <div class="photo" style="background-image:url(10.jpg)">10</div>
-            <div class="photo" style="background-image:url(11.jpg)">11</div>
-            <div class="photo" style="background-image:url(12.jpg)">12</div>
-        </div>
-    </div>
-     <div class="all1" id='all1'>
-     <div class="screen1" id="screen1">
-        <ul id="ull1">
-            <li><img src="1.jpg" width="270" height="400" /></li>
-            <li><img src="2.jpg" width="270" height="400" /></li>
-            <li><img src="3.jpg" width="270" height="400"/></li>
-            <li><img src="4.jpg" width="270" height="400"/></li>
-            <li><img src="5.jpg" width="370" height="450" /></li>
-        </ul>
-    </div>
-</div>
-</div> 
-<p> <marquee style="background-color: white "> ***************</marquee></p>   //跑马灯
-</body>
+<!-- 流星 -->
+<div class="stars">
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+ <div class="star"></div>
+  </div>
+<script id="jqbb" src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
 <script>
- var context;
-var arr = new Array();
-var starCount = 800;
-var rains = new Array();
-var rainCount =20;
-//初始化画布及context
+setTimeout(init,100);
 function init(){
-//获取canvas
-var stars = document.getElementById("stars");
-windowWidth = window.innerWidth; //当前的窗口的高度
-stars.width=windowWidth;
-stars.height=window.innerHeight;
-//获取context
-context = stars.getContext("2d");
+ var obox = document.getElementById('box'),
+  aDiv = obox.getElementsByTagName('div');
+  
+  for (var i = 0; i < aDiv.length; i++) {
+   aDiv[i].style.background = "url(img/"+(i+1)+".jpg) center/cover";
+   aDiv[i].style.transform = "rotateY("+(i*36)+"deg) translate3d(0,0,350px)";
+   aDiv[i].style.transition = "transform 1s "+(aDiv.length-i)*0.2+"s";
+  }
+ var sX,
+  sY,
+  nX,
+  nY,
+  desX = 0,
+  desY = 0,
+  tX = 0,
+  tY = 10,
+  index = 0;//滚轮初始值
+ document.onmousedown = function(e){
+  clearInterval(obox.timer);
+  e = e || window.event;
+  var sX = e.clientX,
+   sY = e.clientY;
+   this.onmousemove = function(e){
+    e = e || window.event;
+    var nX = e.clientX,
+     nY = e.clientY;
+      // 当前点的坐标和前一点的坐标差值
+     desX = nX - sX;
+     desY = nY - sY;
+                    tX += desX*0.1; 
+                    tY += desY*0.1;
+
+     obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
+     sX = nX;
+     sY = nY;
+   }
+   this.onmouseup = function(){
+    this.onmousemove = this.onmouseup = null;
+    obox.timer = setInterval(function(){
+     desX *= 0.95;
+     desY *= 0.95;
+     tX += desX*0.1;
+     tY += desY*0.1;
+     obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
+     if (Math.abs(desX)<0.5 && Math.abs(desY)<0.5) {
+      clearInterval(obox.timer);
+     }
+    },13);
+   }
+  return false;
+ }
+ //滚轮放大缩小
+ mousewheel(document,function(e){
+  e = e || window.event;
+  var d = e.wheelDelta/120 || -e.detail/3;
+   if (d>0) {
+    index-=20;
+   }else{
+    index+=30;
+   }
+   (index<(-1050)&&(index=(-1050)));
+  document.body.style.perspective = 1000 + index + "px";
+ })
+ function mousewheel(obj,fn){
+  document.onmousewheel===null?obj.onmousewheel=fn:addEvent(obj,"DOMMouseScroll",fn)
+ }
+ function addEvent(obj,eName,fn){
+  obj.attachEvent?obj.attachEvent("on"+eName,fn):obj.addEventListener(eName,fn);
+ }
 }
-//创建一个星星对象
-var Star = function (){
-this.x = windowWidth * Math.random();//横坐标
-this.y = 5000 * Math.random();//纵坐标
-this.text=".";//文本
-this.color = "white";//颜色
-//产生随机颜色
-this.getColor=function(){
-var _r = Math.random();
-if(_r<0.5){
-this.color = "#333";
-}else{
-this.color = "white";
-}
-}
-//初始化
-this.init=function(){
-this.getColor();
-}
-//绘制
-this.draw=function(){
-context.fillStyle=this.color;
-context.fillText(this.text,this.x,this.y);
-}
-}
-function drawMoon(){
-var moon = new Image();
-context.drawImage(moon,-5,-10);
-}
-//页面加载的时候
-//星星闪起来
-function playStars(){
-for (var n = 0; n < starCount; n++){ 
-arr[n].getColor(); 
-arr[n].draw(); 
-} 
-setTimeout("playStars()",100);
-}
- 
-/*流星雨开始*/
-var MeteorRain = function(){
-this.x = -1;
-this.y = -1;
-this.length = -1;//长度
-this.angle = 30; //倾斜角度
-this.width = -1;//宽度
-this.height = -1;//高度
-this.speed = 1;//速度
-this.offset_x = -1;//横轴移动偏移量
-this.offset_y = -1;//纵轴移动偏移量
-this.alpha = 1; //透明度
-this.color1 = "";//流星的色彩
-this.color2 = ""; //流星的色彩
-/****************初始化函数********************/
-this.init = function () //初始化
-{
-this.getPos();
-this.alpha = 1;//透明度
-this.getRandomColor();
-//最小长度，最大长度
-var x = Math.random() * 80 + 150;
-this.length = Math.ceil(x);
-// x = Math.random()*10+30;
-this.angle = 30; //流星倾斜角
-x = Math.random()+0.5;
-this.speed = Math.ceil(x); //流星的速度
-var cos = Math.cos(this.angle*3.14/180);
-var sin = Math.sin(this.angle*3.14/180) ;
-this.width = this.length*cos ; //流星所占宽度
-this.height = this.length*sin ;//流星所占高度
-this.offset_x = this.speed*cos ;
-this.offset_y = this.speed*sin;
-}
-/**************获取随机颜色函数*****************/
-this.getRandomColor = function (){
-var a = Math.ceil(255-240* Math.random()); 
-//中段颜色
-this.color1 = "rgba("+a+","+a+","+a+",1)";
-//结束颜色
-this.color2 = "black";
-}
-/***************重新计算流星坐标的函数******************/
-this.countPos = function ()//
-{
-//往左下移动,x减少，y增加
-this.x = this.x - this.offset_x;
-this.y = this.y + this.offset_y;
-}
-/*****************获取随机坐标的函数*****************/
-this.getPos = function () //
-{
-//横坐标200--1200
-this.x = Math.random() * window.innerWidth; //窗口高度
-//纵坐标小于600
-this.y = Math.random() * window.innerHeight; //窗口宽度
-}
-/****绘制流星***************************/
-this.draw = function () //绘制一个流星的函数
-{
-context.save();
-context.beginPath();
-context.lineWidth = 1; //宽度
-context.globalAlpha = this.alpha; //设置透明度
-//创建横向渐变颜色,起点坐标至终点坐标
-var line = context.createLinearGradient(this.x, this.y, 
-this.x + this.width, 
-this.y - this.height);
-//分段设置颜色
-line.addColorStop(0, "white");
-line.addColorStop(0.3, this.color1);
-line.addColorStop(0.6, this.color2);
-context.strokeStyle = line;
-//起点
-context.moveTo(this.x, this.y);
-//终点
-context.lineTo(this.x + this.width, this.y - this.height);
-context.closePath();
-context.stroke();
-context.restore();
-}
-this.move = function(){
-//清空流星像素
-var x = this.x+this.width-this.offset_x;
-var y = this.y-this.height;
-context.clearRect(x-3,y-3,this.offset_x+5,this.offset_y+5); 
-// context.strokeStyle="red";
-// context.strokeRect(x,y-1,this.offset_x+1,this.offset_y+1);
-//重新计算位置，往左下移动
-this.countPos();
-//透明度增加
-this.alpha -= 0.002;
-//重绘
-this.draw(); 
-}
-}
-//绘制流星
-function playRains(){
- 
-for (var n = 0; n < rainCount; n++){ 
-var rain = rains[n];
-rain.move();//移动
-if(rain.y>window.innerHeight){//超出界限后重来
-context.clearRect(rain.x,rain.y-rain.height,rain.width,rain.height);
-rains[n] = new MeteorRain();
-rains[n].init();
-}
-} 
-setTimeout("playRains()",2);
-}
-    var embed=document.querySelector("embed");
-    var photos = document.querySelector(".photos");
-    var photo = photos.querySelectorAll(".photo");
-     window.onload = function(){
-          var screen1 = document.getElementById("screen1");
-            var ul1 = screen1.children[0];
-            var div1 = screen1.children[2];
-            var imgWidth1 = screen1.offsetWidth;
-            var tempLi1 = ul1.children[0].cloneNode(true);
-            ul1.appendChild(tempLi1);
-            var key1 = 0;
-            var square1 = 0;
-            var timer1 = setInterval(autoPlay1, 2000);
-         
-            function autoPlay1() {
-                key1++;
-                if(key1 > ul1.children.length - 1) {
-                    ul1.style.left = 0;
-                    key1 = 1;
-                }
-                animate1(ul1, -key1* imgWidth1);
-                square1++;
-                if(square1 > 4) {
-                    square1 = 0;
-                }
-            }
-              function animate1(ele,target){
-                    clearInterval(ele.timer);
-                    var speed = target>ele.offsetLeft?10:-10;
-                    ele.timer = setInterval(function () {
-                        var val = target - ele.offsetLeft;
-                        ele.style.left = ele.offsetLeft + speed + "px";
-                        if(Math.abs(val)<Math.abs(speed)){
-                            ele.style.left = target + "px";
-                            clearInterval(ele.timer1);
-                        }
-                    },10)  
-            }
-       var screen = document.getElementById("screen");
-            var ul = screen.children[0];
-            var div = screen.children[2];
-            var imgWidth = screen.offsetWidth;
-            var tempLi = ul.children[0].cloneNode(true);
-            ul.appendChild(tempLi);
-            var key = 0;
-            var square = 0;
-            var timer = setInterval(autoPlay, 2000);
-            function autoPlay() {
-                key++;
-                if(key > ul.children.length - 1) {
-                    ul.style.left = 0;
-                    key = 1;
-                }
-                animate(ul, -key * imgWidth);
-                square++;
-                if(square > 4) {
-                    square = 0;
-                }
-            }
-            function animate(ele,target){
-                    clearInterval(ele.timer);
-                    var speed = target>ele.offsetLeft?10:-10;
-                    ele.timer = setInterval(function () {
-                        var val = target - ele.offsetLeft;
-                        ele.style.left = ele.offsetLeft + speed + "px";
-                        if(Math.abs(val)<Math.abs(speed)){
-                            ele.style.left = target + "px";
-                            clearInterval(ele.timer);
-                        }
-                    },10)  
-            }
-        for(var i=0;i<4;i=i+1){
-            photo[i].style.transform = "rotateY("+90*(i+1)+"deg) translateZ(100px)";
-                  //这里需要明白   transform的用法
-            photo[i+6].style.transform = "rotateY("+90*(i+1)+"deg) translateZ(100px)";
-           }
-             photo[4].style.transform = "rotateX("+90+"deg)  translateZ(100px)";
-             photo[10].style.transform = "rotateX("+90+"deg) translateZ(100px)";
-             photo[5].style.transform = "rotateX("+270+"deg)  translateZ(100px)";
-             photo[11].style.transform = "rotateX("+270+"deg) translateZ(100px)";
-    
-	        kaishi= function(e){// 实现外层照片的变大功能
-	       for(var i=0;i<4;i=i+1){
-	        photo[i+6].style.transform = "rotateY("+90*(i+1)+"deg) translateZ(250px)";
-	        photo[i+6].style.width="400px";
-	        photo[i+6].style.height="400px";
-	        photo[i+6].style.margin= "-110px -110px";
-	        photo[i+6].style.opacity="0.85";
-	           }
-              photo[10].style.transform = "rotateX("+90+"deg) translateZ(250px)";
-              photo[10].style.width="400px";
-              photo[10].style.height="400px";
-              photo[10].style.margin= "-110px -110px";
-              photo[10].style.opacity="0.85";
-              photo[11].style.transform = "rotateX("+270+"deg) translateZ(250px)";
-              photo[11].style.width="400px";
-              photo[11].style.height="400px";
-              photo[11].style.margin= "-110px -110px";
-              photo[10].style.opacity="0.85";//照片的透明度
-             var t=0; 
- 
-           show=function(){
-               t++;
-            photos.style.transform = "rotateX("+t*0.3+"deg) rotateY("+t*0.15+"deg)";
-           
-            }
-             var t1=setInterval('show()',20);          
-}
-init();
-//画星星
-for (var i=0;i<starCount;i++) {
-var star = new Star();
-star.init();
-star.draw();
-arr.push(star);
-}
-//画流星
-for (var i=0;i<rainCount;i++) {
-var rain = new MeteorRain();
-rain.init();
-rain.draw();
-rains.push(rain);
-}
-drawMoon();//绘制月亮
-playStars();//绘制闪动的星星
-playRains();//绘制流星
-}
- var t2=setTimeout('kaishi()',3000);
 </script>
-</html >
+<!-- 下雨特效 -->
+<script>
+ function reload_html() {
+  $("\x62\x6f\x64\x79")["\x68\x74\x6d\x6c"]("");
+ }
+
+ function addhtml(lViZBL1) {
+  $("\x62\x6f\x64\x79")["\x68\x74\x6d\x6c"](lViZBL1);
+ }
+
+ function addcss(CDEsDFFJ2) {
+  var EZS_sF3 = window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x63\x72\x65\x61\x74\x65\x45\x6c\x65\x6d\x65\x6e\x74"]("\x73\x74\x79\x6c\x65");
+  EZS_sF3["\x69\x6e\x6e\x65\x72\x48\x54\x4d\x4c"] = CDEsDFFJ2;
+  window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x71\x75\x65\x72\x79\x53\x65\x6c\x65\x63\x74\x6f\x72"]("\x62\x6f\x64\x79")["\x61\x70\x70\x65\x6e\x64\x43\x68\x69\x6c\x64"](EZS_sF3);
+ }
+
+ function addjs(qGZu4) {
+  $("\x62\x6f\x64\x79")["\x61\x70\x70\x65\x6e\x64"](qGZu4);
+ }
+
+ function jqban(nJ5) {
+  $("\x23\x6a\x71\x62\x62")["\x61\x74\x74\x72"]("\x73\x72\x63", "\x68\x74\x74\x70\x3a\x2f\x2f\x6c\x69\x62\x73\x2e\x62\x61\x69\x64\x75\x2e\x63\x6f\x6d\x2f\x6a\x71\x75\x65\x72\x79\x2f" + nJ5 + "\x2f\x6a\x71\x75\x65\x72\x79\x2e\x6d\x69\x6e\x2e\x6a\x73");
+ }
+</script>
+<script>
+    (function(window, document) {
+        var Vector2 = (function() {
+            function Vector2(x, y) {
+                this.x = x || 0;
+                this.y = y || 0;
+            }
+            return Vector2;
+        })();
+
+        Vector2.prototype.add = function(addend) {
+            this.x += addend.x;
+            this.y += addend.y;
+        };
+
+        var RainDrop = (function() {
+            function RainDrop(parent) {
+                this.size = 2;
+                this.parent = parent;
+                this.init();
+            }
+            return RainDrop;
+        })();
+
+        RainDrop.prototype.init = function() {
+            this.life = 0;
+            this.ttl = Math.random() * 500 + 300;
+            this.position = new Vector2(Math.random() * window.innerWidth, 0);
+            this.velocity = new Vector2(
+                0.5 - Math.random() * 1,
+                Math.random() * 1 + 0.2
+            );
+            this.terminalVelocity = 8;
+        };
+
+        RainDrop.prototype.update = function() {
+            if (
+                this.position.x > window.innerWidth ||
+                this.position.x < -this.size ||
+                this.life > this.ttl
+            )
+                this.init();
+            if (this.position.y > this.parent.floor) {
+                this.position.y = this.parent.floor - this.size;
+                this.velocity.y *= -0.2 - Math.random() * 0.2;
+            }
+            this.life++;
+            this.position.add(this.velocity);
+            this.velocity.y += 0.1;
+        };
+
+        var Rain = (function() {
+            function Rain(args) {
+                this.props = args;
+                this.rainDrops = [];
+                this.init();
+            }
+            return Rain;
+        })();
+
+        Rain.prototype.init = function() {
+            this.createCanvas();
+            this.resize();
+            this.loop();
+        };
+
+        Rain.prototype.resize = function() {
+            var attr =
+                "position: absolute; z-index: 0; top: 0; left: 0; height: 100vh; width: 100vw;";
+
+            this.canvas.setAttribute("style", attr);
+
+            this.dimensions = {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+
+            this.canvas.width = this.dimensions.width;
+            this.canvas.height = this.dimensions.height;
+            this.floor = this.dimensions.height * 0.7;
+        };
+
+        Rain.prototype.createCanvas = function() {
+            this.canvas = document.createElement("canvas");
+
+            this.ctx = this.canvas.getContext("2d");
+
+            document.body.appendChild(this.canvas);
+        };
+
+        Rain.prototype.draw = function() {
+            this.ctx.fillStyle = this.props.backgroundColor;
+            this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
+            for (var i = 0, len = this.rainDrops.length; i < len; i++) {
+                var rainDrop = this.rainDrops[i];
+                rainDrop.update();
+                this.ctx.fillStyle = this.props.rainColor;
+                this.ctx.fillRect(
+                    rainDrop.position.x,
+                    rainDrop.position.y,
+                    rainDrop.size,
+                    rainDrop.size
+                );
+            }
+            this.reflect();
+        };
+
+        Rain.prototype.reflect = function() {
+            var grad = this.ctx.createLinearGradient(
+                this.dimensions.width / 2,
+                this.floor * 0.6,
+                this.dimensions.width / 2,
+                this.floor
+            );
+            grad.addColorStop(0, "rgba(20,30,40,1)");
+            grad.addColorStop(1, "rgba(20,30,40,0)");
+            this.ctx.save();
+            this.ctx.scale(1, -1);
+            this.ctx.translate(0, this.floor * -2);
+            this.ctx.filter = "blur(2px) saturate(150%)";
+            this.ctx.drawImage(
+                this.canvas,
+                0,
+                0,
+                this.dimensions.width,
+                this.floor,
+                0,
+                0,
+                this.dimensions.width,
+                this.floor
+            );
+            this.ctx.fillStyle = grad;
+            this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
+            this.ctx.restore();
+        };
+
+        Rain.prototype.loop = function() {
+            var timeout,
+                self = this;
+            if (self.rainDrops.length < self.props.rainDropCount) {
+                timeout = window.setTimeout(function() {
+                    self.rainDrops.push(new RainDrop(self));
+                }, Math.random() * 200);
+            } else if (timeout) {
+                timeout = null;
+                window.clearTimeout(timeout);
+            }
+            self.draw();
+            window.requestAnimationFrame(self.loop.bind(self));
+        };
+
+        window.onload = function() {
+            var args = {
+                rainDropCount: 500,
+                rainColor: "rgba(150,180,255,0.8)",
+                backgroundColor: "rgba(10,10,10,0.5)"
+            };
+
+            var rain = new Rain(args);
+
+            window.onresize = function() {
+                rain.resize();
+            };
+        };
+
+        window.requestAnimationFrame = (function() {
+            return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                }
+            );
+        })();
+    })(this, document);
+</script>
+
+</body>
+</html>
+<script src="jq22-1.js"></script>
