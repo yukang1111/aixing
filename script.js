@@ -6,7 +6,7 @@ var imgWidth = 120; // 照片宽度 (unit: px)
 var imgHeight = 170; // 照片高度 (unit: px)
  
 //背景音乐地址
-var bgMusicURL = '音乐地址  '; 
+var bgMusicURL = 'https://m.95549.cn/resources/esp/college/test/img/468962939.mp3'; 
 var bgMusicControls = true; //是否显示背景音乐播放器
  
  
@@ -114,3 +114,9 @@ document.onmousewheel = function(e) {
 	radius += d;
 	init(1);
 };
+
+setTimeout(function() {
+    // 自动播放音乐
+    var audio = document.querySelector('#music-container audio');
+    audio.play();
+}, 1000);
