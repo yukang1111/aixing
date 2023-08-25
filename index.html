@@ -1,183 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>3D照片墙动画</title>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+		<!-- partial:index.partial.html -->
+		<div id="drag-container">
+			<div id="spin-container">
+				<!-- 在这里添加图片或者mp4视频，最多13个 -->
+ 
+ 
+ 	<!-- 带链接的图片 -->
+			
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* CSS 样式 */
+				<img src="img/1.png" alt="">
+				<img src="img/1.png" alt="">
+				<img src="img/1.png" alt="">
+				<img src="img/1.png" alt="">
+				<img src="img/1.png" alt="">
+				<img src="img/1.png" alt="">
+				
 
-        #game-board {
-            width: 480px;
-            height: 500px;
-            border: 1px solid black;
-            position: relative;
-            margin: 0 auto;
-        }
 
-        #player {
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
 
-        .bullet {
-            width: 5px;
-            height: 20px;
-            background-color: black;
-            position: absolute;
-        }
-
-        .enemy {
-            width: 40px;
-            height: 40px;
-            background-color: blue;
-            position: absolute;
-        }
-
-        #score {
-            font-size: 24px;
-            text-align: center;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="game-board">
-        <div id="player"></div>
-        <div id="score">Score: 0</div>
-    </div>
-</body>
-<script>
-    // JavaScript 代码
-
-    let gameBoard = document.getElementById("game-board");
-    let player = document.getElementById("player");
-    let scoreElement = document.getElementById("score");
-
-    let bullets = [];
-    let enemies = [];
-    let score = 0;
-
-    function movePlayer(direction) {
-        let currentPosition = parseInt(player.style.left) || 0;
-
-        if (direction === "left") {
-            currentPosition -= 20;
-        } else if (direction === "right") {
-            currentPosition += 20;
-        }
-
-        // 限制飞机移动范围在游戏板内
-        currentPosition = Math.max(0, Math.min(currentPosition, gameBoard.offsetWidth - player.offsetWidth));
-
-        player.style.left = currentPosition + "px";
-    }
-
-    function shoot() {
-        let bullet = document.createElement("div");
-        bullet.className = "bullet";
-        bullet.style.left = parseInt(player.style.left) + player.offsetWidth / 2 - 2.5 + "px";
-        bullet.style.bottom = player.offsetHeight + "px";
-        gameBoard.appendChild(bullet);
-        bullets.push(bullet);
-    }
-
-    function moveBullets() {
-        bullets.forEach((bullet, bulletIndex) => {
-            let currentPosition = parseInt(bullet.style.bottom) || 0;
-            currentPosition += 10;
-
-            if (currentPosition >= gameBoard.offsetHeight) {
-                bullet.remove();
-                bullets.splice(bulletIndex, 1);
-            } else {
-                bullet.style.bottom = currentPosition + "px";
-            }
-        });
-    }
-
-    function createEnemy() {
-        let enemy = document.createElement("div");
-        enemy.className = "enemy";
-        enemy.style.left = Math.random() * (gameBoard.offsetWidth - 40) + "px";
-        enemy.style.top = "0px";
-        gameBoard.appendChild(enemy);
-        enemies.push(enemy);
-    }
-
-    function moveEnemies() {
-        enemies.forEach((enemy, enemyIndex) => {
-            let currentPosition = parseInt(enemy.style.top) || 0;
-            currentPosition += 5;
-
-            if (currentPosition >= gameBoard.offsetHeight) {
-                enemy.remove();
-                enemies.splice(enemyIndex, 1);
-            } else {
-                enemy.style.top = currentPosition + "px";
-            }
-        });
-    }
-
-    function detectCollision() {
-        bullets.forEach((bullet, bulletIndex) => {
-
-            enemies.forEach((enemy, enemyIndex) => {
-                if (
-                    bullet.offsetTop <= enemy.offsetTop + enemy.offsetHeight &&
-                    bullet.offsetTop + bullet.offsetHeight >= enemy.offsetTop &&
-                    bullet.offsetLeft <= enemy.offsetLeft + enemy.offsetWidth &&
-                    bullet.offsetLeft + bullet.offsetWidth >= enemy.offsetLeft
-                ) {
-                    bullet.remove();
-                    bullets.splice(bulletIndex, 1);
-                    enemy.remove();
-                    enemies.splice(enemyIndex, 1);
-                    score += 10;
-                    scoreElement.innerHTML = "Score: " + score;
-                }
-            });
-        });
-    } function gameLoop() {
-        moveBullets();
-        moveEnemies();
-        detectCollision();
-    }
-
-    function startGame() {
-        score = 0;
-        scoreElement.innerHTML = "Score: " + score;
-
-        player.style.left = (gameBoard.offsetWidth - player.offsetWidth) / 2 + "px";
-
-        bullets.forEach(bullet => bullet.remove());
-        bullets = [];
-
-        enemies.forEach(enemy => enemy.remove());
-        enemies = [];
-
-        setInterval(createEnemy, 1000);
-        setInterval(gameLoop, 30);
-    }
-
-    document.addEventListener("keydown", function (event) {
-        if (event.code === "ArrowLeft") {
-            movePlayer("left");
-        } else if (event.code === "ArrowRight") {
-            movePlayer("right");
-        } else if (event.code === "Space") {
-            shoot();
-        }
-    });
-
-    startGame();
-</script>
-
+			
+ 
+ 
+				<!-- 带链接的图片 -->
+				<!-- <a target="_blank" href="7.png">
+					<img src="7.png" alt="">
+				</a> -->
+ 
+				<!-- 示例视频  -->
+				<!-- <video controls autoplay="autoplay" loop>
+					<source src="demo.mp4" type="video/mp4">
+				</video> -->
+ 
+				<!-- 背景文字描述 -->
+				<p>3D 相册</p>
+			</div>
+			<div id="ground"></div>
+		</div>
+ 
+		<div id="music-container"></div>
+ 
+		<script src="./script.js"></script>
+ 
+	</body>
 </html>
